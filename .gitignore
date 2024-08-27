@@ -156,9 +156,5 @@ blogicum/blog/migrations
 
 .gitignore/
 
-pytest.ini/
-
-setup.cfg/
-
 blogicum/pages/migrations/
 
