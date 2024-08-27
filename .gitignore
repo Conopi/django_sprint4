@@ -154,7 +154,8 @@ blogicum/db.sqlite3
 
 blogicum/blog/migrations
 
-.gitignore/
+.gitignore
 
 blogicum/pages/migrations/
 
+db.json/
