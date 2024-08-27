@@ -153,3 +153,12 @@ sent_emails/
 blogicum/db.sqlite3
 
 blogicum/blog/migrations
+
+.gitignore
+
+pytest.ini
+
+setup.cfg
+
+blogicum/pages/migrations
+
