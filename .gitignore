@@ -154,11 +154,11 @@ blogicum/db.sqlite3
 
 blogicum/blog/migrations
 
-.gitignore
+.gitignore/
 
-pytest.ini
+pytest.ini/
 
-setup.cfg
+setup.cfg/
 
-blogicum/pages/migrations
+blogicum/pages/migrations/
 
