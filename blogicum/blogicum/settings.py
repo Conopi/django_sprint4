@@ -110,3 +110,5 @@ MAX_NAME_LENGTH = 256
 MAX_DISPLAY_LENGTH = 20
 
 MAX_LENGTH = 64
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
