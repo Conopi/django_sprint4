@@ -104,3 +104,9 @@ LOGIN_URL = 'login'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MAX_NAME_LENGTH = 256
+
+MAX_DISPLAY_LENGTH = 20
+
+MAX_LENGTH = 64
