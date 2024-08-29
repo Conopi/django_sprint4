@@ -1,15 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from .utils import get_posts, get_paginator
+from .utils import get_posts, get_paginator, is_post_author, is_comment_author
 from .models import Post, Category, Comment, User
 from .forms import PostForm, ProfileEditForm, CommentForm
-
-
-def is_post_author(request, post):
-    if request.user != post.author:
-        return redirect('blog:post_detail', post.id)
-    return None
 
 
 def index(request):
@@ -99,13 +93,9 @@ def delete_post(request, post_id):
     if redirect_response:
         return redirect_response
     if request.method == 'POST':
-        form = PostForm(request.POST or None, instance=post)
         post.delete()
         return redirect('blog:index')
-    else:
-        form = PostForm(instance=post)
-    context = {'form': form}
-    return render(request, 'blog/create.html', context)
+    return render(request, 'blog/create.html', {'post': post})
 
 
 @login_required
@@ -140,8 +130,9 @@ def edit_comment(request, post_id, comment_id):
 @login_required
 def delete_comment(request, post_id, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    if request.user != comment.author:
-        return redirect('blog:post_detail', post_id)
+    redirect_response = is_comment_author(request, comment, post_id)
+    if redirect_response:
+        return redirect_response
     if request.method == "POST":
         comment.delete()
         return redirect('blog:post_detail', post_id)
